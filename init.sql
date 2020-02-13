@@ -1,0 +1,1 @@
+CREATE TABLE sample (data TEXT NOT NULL);

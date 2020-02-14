@@ -6,11 +6,7 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - volumes:
-          # про data завтра распишу в видео/статье
-          # - //c/Docker/pg-data:/var/lib/postgresql/data
-          # про ДЗ - вам нужно схему положить сюда (вместо init.sql)
-          - //c/Docker/pg-init:/docker-entrypoint-initdb.d
+      - ./schema:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE=app

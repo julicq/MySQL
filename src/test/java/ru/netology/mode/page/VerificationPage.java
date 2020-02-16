@@ -2,12 +2,9 @@ package ru.netology.mode.page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import ru.netology.mode.data.DataHelper;
-import ru.netology.mode.page.DashboardPage;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
 
 public class VerificationPage {
     private SelenideElement smsCode = $("[data-test-id=code] input");
@@ -18,9 +15,6 @@ public class VerificationPage {
         smsCode.shouldBe(Condition.visible);
     }
 
-    public void errorNotificationCreate() {
-        errorNotification.shouldBe(visible);
-    }
 
     public DashboardPage validVerify(String verificationCode) {
         smsCode.setValue(verificationCode);

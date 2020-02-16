@@ -37,9 +37,10 @@ public class DataHelper {
         try (val conn = DriverManager.getConnection("jdbc:mysql://192.168.99.100:3306/app",
                 "app", "pass")) {
             long count = runner.query(conn, countSQL, new ScalarHandler<>());
-            // при создании нового пользователя, логин меняется, но пароль всегда остается неизменным (см. DBeaver)
+            // при создании нового пользователя, логин меняется, но пароль в зашифрованном виде используется тот,
+            // который принадлежит пользователю с логином vasya (см. DBeaver)
             runner.update(conn, dataSQL, Long.toString(count + 1),
-                    login, "$2a$10$3oIaaE/XKaHyjqzevEmN9e.JZFD0I678RzFAAEpPpI/JpA/yibKuu", status);
+                    login, "$2a$10$Pml3uwcimo7D/XZVwf2OaOWML5yYu5c.ziYKTwG36kAhzdmJRCYN2", status);
         }
         return new AuthInfo(login, "qwerty123");
     }

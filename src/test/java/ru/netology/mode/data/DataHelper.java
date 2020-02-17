@@ -39,7 +39,7 @@ public class DataHelper {
             long count = runner.query(conn, countSQL, new ScalarHandler<>());
             // при создании нового пользователя, логин меняется, но пароль в зашифрованном виде используется тот,
             // который принадлежит пользователю с логином vasya (см. DBeaver)
-            runner.update(conn, dataSQL, Long.toString(count + 1),
+            runner.update(conn, dataSQL, count,
                     login, "$2a$10$Pml3uwcimo7D/XZVwf2OaOWML5yYu5c.ziYKTwG36kAhzdmJRCYN2", status);
         }
         return new AuthInfo(login, "qwerty123");
